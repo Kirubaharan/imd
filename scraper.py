@@ -68,10 +68,11 @@ def main(argv):
         states = [state_no]
 
     for single_state in states:
-        con = lite.connect('./database/imd.sqlite')
+        con = lite.connect('/home/kiruba/PycharmProjects/imd_scrape/imd/database/imd.sqlite')
         cur = con.cursor()
         print "Running "+run_type+" job for date="+date+" state="+str(single_state)
         baseurl = "http://imdaws.com/WeatherARGData.aspx?&FromDate="+str(date)+"&ToDate="+str(date)+"&State="+str(single_state)
+        print baseurl
         m = hashlib.md5()
         m.update(baseurl)
         url_hash = m.hexdigest()
